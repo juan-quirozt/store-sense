@@ -8,10 +8,6 @@ import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import Link from 'next/link'
 import Logo from '@/public/Logo.png'
-import { LoginForm } from '@/components/LoginSheet'
-import { SignUpForm } from '@/components/SignUpSheet'
-import { UserMenu } from '@/components/UserMenu'
-import ShoppingCart from '@/components/ShoppingCart';
 
 function NavBar() {
   const [isLogged, setIsLogged] = useState<boolean>();
