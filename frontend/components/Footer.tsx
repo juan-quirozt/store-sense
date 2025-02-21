@@ -23,8 +23,8 @@ function Footer() {
             </a>
         </div>
         <Separator className="my-4" />
-        <p><span className='font-bold'>2024 © PlanetHub.</span> All Rights Reserved.</p>
-        <p>Made by PlanetHub Team with 🧡</p>
+        <p><span className='font-bold'>2025 © StoreSense.</span> All Rights Reserved.</p>
+        <p>Made by StoreSense Team with 🧡</p>
     </footer>
   );
 }

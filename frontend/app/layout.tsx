@@ -8,8 +8,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PlanetHub | Explore new planets!",
-  description: "Find accommodation and flights in our intergalactic terminal.",
+  title: "StoreSense | Explora tu negocio!",
+  description: "Mejora el rendimiento de tu negocio por medio de nuestros modelos.",
 };
 
 export default function RootLayout({

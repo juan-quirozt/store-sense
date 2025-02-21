@@ -17,10 +17,10 @@ export default function NotFound() {
                 </div>
             </div>
 
-            <h1 className="text-4xl font-bold mb-4 text-textTitle">Planet Not Found</h1>
-            <p className="text-xl mb-8 text-center text-textAll">Oops! It seems this cosmic destination doesn't exist.</p>
+            <h1 className="text-4xl font-bold mb-4 text-textTitle">Page Not Found</h1>
+            <p className="text-xl mb-8 text-center text-textAll">Oops! Tal vez lo que buscas aún no está publicado.</p>
             <Link href="/" className="px-6 py-3 bg-palleteOrange rounded-full hover:bg-palleteOrangeVariant transition-colors">
-                Return to Home Galaxy
+                Volver
             </Link>
         </div>
     );
