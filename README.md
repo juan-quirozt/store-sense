@@ -1,10 +1,20 @@
-Este es un proyecto de [Next.js](https://nextjs.org/) creado con [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Proyecto Next.js con Flask
 
-## Comenzando
+Este es un proyecto basado en [Next.js](https://nextjs.org/) creado con [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Primero, inicia el servidor de desarrollo:
+## Cómo empezar
+
+Primero, inicia el servidor de Flask para el backend:
 
 ```bash
+cd backend
+python app.py
+```
+
+Luego, en otra terminal, inicia el servidor de desarrollo de Next.js para el frontend:
+
+```bash
+cd frontend
 npm run dev
 # o
 yarn dev
@@ -16,30 +26,22 @@ bun dev
 
 Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el resultado.
 
-Puedes comenzar a editar la página modificando `app/page.tsx`. La página se actualizará automáticamente a medida que realices cambios.
+Puedes empezar a editar la página modificando `app/page.tsx`. Los cambios se reflejarán automáticamente en la aplicación.
 
-Este proyecto usa [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) para optimizar y cargar automáticamente Inter, una fuente personalizada de Google.
+Este proyecto utiliza [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) para optimizar y cargar automáticamente la fuente Inter de Google.
 
-## Iniciar el servidor Flask
+## Más información
 
-Para que la aplicación funcione correctamente, también debes iniciar el servidor Flask. Ejecuta el siguiente comando en la terminal:
+Para aprender más sobre Next.js, consulta los siguientes recursos:
 
-```bash
-python app.py
-```
+- [Documentación de Next.js](https://nextjs.org/docs) - Aprende sobre las características y API de Next.js.
+- [Aprende Next.js](https://nextjs.org/learn) - Un tutorial interactivo sobre Next.js.
 
-## Aprende más
+También puedes visitar el [repositorio de Next.js en GitHub](https://github.com/vercel/next.js), donde se aceptan comentarios y contribuciones.
 
-Para obtener más información sobre Next.js, consulta los siguientes recursos:
+## Despliegue en Vercel
 
-- [Documentación de Next.js](https://nextjs.org/docs) - aprende sobre las funciones y API de Next.js.
-- [Aprende Next.js](https://nextjs.org/learn) - un tutorial interactivo de Next.js.
+La forma más sencilla de desplegar tu aplicación Next.js es utilizando la [plataforma Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme), creada por los desarrolladores de Next.js.
 
-Puedes revisar el [repositorio de Next.js en GitHub](https://github.com/vercel/next.js) - tus comentarios y contribuciones son bienvenidos.
-
-## Desplegar en Vercel
-
-La forma más sencilla de desplegar tu aplicación Next.js es utilizando la [Plataforma Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) creada por los desarrolladores de Next.js.
-
-Consulta nuestra [documentación de despliegue de Next.js](https://nextjs.org/docs/deployment) para más detalles.
+Consulta nuestra [documentación de despliegue](https://nextjs.org/docs/deployment) para más detalles.
 
