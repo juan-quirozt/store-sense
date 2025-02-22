@@ -3,7 +3,6 @@ instance/
 *.pyc
 *.pyo
 *.pyd
-*.h5
 /static/uploads/
 venv/
 .venv/
