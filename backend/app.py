@@ -3,53 +3,55 @@ from flask_cors import CORS  # Permitir peticiones desde otro dominio (Next.js)
 import os
 from werkzeug.utils import secure_filename
 from app.clasificador_imagenes import clasificar_imagen
-from app import app
 
-app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+def create_app():
+    app = Flask(__name__)
+    CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 
-app.config['UPLOAD_FOLDER'] = 'static/uploads'
-os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+    app.config['UPLOAD_FOLDER'] = 'static/uploads'
+    os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
-@app.route('/api/clasificar', methods=['POST'])
-def clasificar():
-    print("\n📩 **Solicitud recibida en /api/clasificar**")
-    
-    # Imprimir detalles de la petición
-    print("🔍 Headers:", request.headers)
-    print("🔍 Content-Type:", request.content_type)
-    print("🔍 request.files:", request.files)
-    print("🔍 request.form:", request.form)
+    @app.route('/api/clasificar', methods=['POST'])
+    def clasificar():
+        print("\n📩 **Solicitud recibida en /api/clasificar**")
 
-    if 'imagen' not in request.files:
-        print("❌ Error: No se envió ninguna imagen")
-        return jsonify({"error": "No se envió ninguna imagen"}), 400
+        # Imprimir detalles de la petición
+        print("🔍 Headers:", request.headers)
+        print("🔍 Content-Type:", request.content_type)
+        print("🔍 request.files:", request.files)
+        print("🔍 request.form:", request.form)
 
-    imagen = request.files['imagen']
-    
-    if imagen.filename == '':
-        print("❌ Error: Archivo vacío")
-        return jsonify({"error": "Archivo vacío"}), 400
+        if 'imagen' not in request.files:
+            print("❌ Error: No se envió ninguna imagen")
+            return jsonify({"error": "No se envió ninguna imagen"}), 400
 
-    filename = secure_filename(imagen.filename)
-    filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-    imagen.save(filepath)
+        imagen = request.files['imagen']
 
-    print(f"✅ Imagen guardada en: {filepath}")
+        if imagen.filename == '':
+            print("❌ Error: Archivo vacío")
+            return jsonify({"error": "Archivo vacío"}), 400
 
-    try:
-        clase_predicha, confianza = clasificar_imagen(filepath)
-        print(f"✅ Clasificación exitosa: Clase - {clase_predicha}, Confianza - {confianza}")
+        filename = secure_filename(imagen.filename)
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        imagen.save(filepath)
 
-        return jsonify({
-            "clase": clase_predicha,
-            "confianza": float(confianza)
-        })
-    except Exception as e:
-        print(f"❌ Error al clasificar la imagen: {e}")
-        return jsonify({"error": "Error interno al procesar la imagen"}), 500
+        print(f"✅ Imagen guardada en: {filepath}")
+
+        try:
+            clase_predicha, confianza = clasificar_imagen(filepath)
+            print(f"✅ Clasificación exitosa: Clase - {clase_predicha}, Confianza - {confianza}")
+
+            return jsonify({
+                "clase": clase_predicha,
+                "confianza": float(confianza)
+            })
+        except Exception as e:
+            print(f"❌ Error al clasificar la imagen: {e}")
+            return jsonify({"error": "Error interno al procesar la imagen"}), 500
+
+    return app
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))  # Usa el puerto de Render o 5000 por defecto
+    port = int(os.environ.get("PORT", 5000))
+    app = create_app()
     app.run(debug=False, host="0.0.0.0", port=port)
-
