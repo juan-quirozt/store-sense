@@ -49,4 +49,6 @@ def clasificar():
         return jsonify({"error": "Error interno al procesar la imagen"}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)  # Flask correrá en el puerto 5000
+    port = int(os.environ.get("PORT", 5000))  # Usa el puerto de Render o 5000 por defecto
+    app.run(debug=True, host="0.0.0.0", port=port)
+
