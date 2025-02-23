@@ -3,6 +3,7 @@ from flask_cors import CORS  # Permitir peticiones desde otro dominio (Next.js)
 import os
 from werkzeug.utils import secure_filename
 from app.clasificador_imagenes import clasificar_imagen
+from app import app
 
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
@@ -50,5 +51,5 @@ def clasificar():
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))  # Usa el puerto de Render o 5000 por defecto
-    app.run(debug=True, host="0.0.0.0", port=port)
+    app.run(debug=False, host="0.0.0.0", port=port)
 
