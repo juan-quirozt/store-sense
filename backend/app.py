@@ -6,20 +6,34 @@ from app.clasificador_imagenes import clasificar_imagen
 
 def create_app():
     app = Flask(__name__)
-    CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+    CORS(app)
 
     app.config['UPLOAD_FOLDER'] = 'static/uploads'
     os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
     @app.route('/api/clasificar', methods=['POST'])
+    @app.route('/api/clasificar', methods=['POST'])
     def clasificar():
         print("\n📩 **Solicitud recibida en /api/clasificar**")
-
+        
         # Imprimir detalles de la petición
         print("🔍 Headers:", request.headers)
         print("🔍 Content-Type:", request.content_type)
         print("🔍 request.files:", request.files)
         print("🔍 request.form:", request.form)
+
+        # Intentar obtener JSON si está presente
+        if request.is_json:
+            data = request.get_json()
+            print("📝 JSON recibido:", data)
+            return data
+        else:
+            print("⚠️ No se recibió JSON en la solicitud.")
+
+        # Intentar obtener datos de `form` si no hay JSON
+        if request.form:
+            print("📑 Datos de `form` recibidos:", request.form)
+            return request.form
 
         if 'imagen' not in request.files:
             print("❌ Error: No se envió ninguna imagen")
@@ -48,6 +62,7 @@ def create_app():
         except Exception as e:
             print(f"❌ Error al clasificar la imagen: {e}")
             return jsonify({"error": "Error interno al procesar la imagen"}), 500
+
 
     return app
 
