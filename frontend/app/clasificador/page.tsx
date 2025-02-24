@@ -36,6 +36,8 @@ export default function ClasificarComponent() {
         body: formData,
       });
 
+      console.log(formData)
+
       if (!res.ok) {
         throw new Error(`Error: ${res.status} ${res.statusText}`);
       }
