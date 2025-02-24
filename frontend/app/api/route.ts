@@ -1,6 +1,7 @@
 export async function POST(req: Request) {
     try {
       const formData = await req.formData();
+      console.log(Request)
   
       const response = await fetch("http://localhost:5000/api/clasificar", {
         method: "POST",
