@@ -63,9 +63,9 @@ export default function ClasificarComponent() {
         <h2 className="text-lg font-semibold mb-2">Instrucciones</h2>
         <p className="text-gray-600">Sigue estos pasos para clasificar una imagen:</p>
         <ul className="list-disc list-inside text-gray-600 mt-2 text-left">
-          <li>Haz clic en el botón "Seleccionar archivo".</li>
+          <li>Haz clic en el botón {'"Seleccionar archivo"'}.</li>
           <li>Selecciona una imagen desde tu dispositivo.</li>
-          <li>Presiona el botón "Subir Imagen" para procesarla.</li>
+          <li>Presiona el botón {'"Subir Imagen"'} para procesarla.</li>
           <li>El modelo devolverá la clase de la imagen.</li>
           <li>El modelo puede retornar 4 clases: Tshirt, Tv, Jeans o Sofa.</li>
         </ul>
