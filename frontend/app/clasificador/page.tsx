@@ -30,8 +30,10 @@ export default function ClasificarComponent() {
     const formData = new FormData();
     formData.append("imagen", image);
 
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+
     try {
-      const res = await fetch("http://localhost:5000/api/clasificar", {
+      const res = await fetch(`${API_URL}/api/clasificar`, {
         method: "POST",
         body: formData,
       });
