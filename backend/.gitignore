@@ -6,3 +6,4 @@ instance/
 /static/uploads/
 venv/
 .venv/
+*.pkl
